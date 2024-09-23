@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Taking App</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #83c5be;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .note-container {
+            background-color: #fefae0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .note-container h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .note-container .note-list {
+            margin-top: 20px;
+            max-height: 200px; /* Set the height of the note list */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        .note-container .note-list .note-item {
+            background-color: #bde0fe;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="note-container">
+        <h1>Note Taking App</h1>
+        <form action="/" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" name="note" placeholder="Enter a note" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add Note</button>
+        </form>
+
+        <div class="note-list">
+            {% if notes %}
+                {% for note in notes %}
+                    <div class="note-item">
+                        {{ note }}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-center">No notes available yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
